@@ -9,6 +9,7 @@ urlpatterns=[
     url(r'^inventory/$',views.Inventory.as_view(), name='inventory'),
     url(r'^dashboard/orders/$',views.Dashboard.as_view(), name='dashboard'),
     url(r'^dashboard/items/$',views.Items.as_view(), name='items'),
+    url(r'^dashboard/analytics/$',views.Analytics.as_view(), name='analytics'),
     url(r'^customers/$',views.Customers.as_view(), name='customers'),
     url(r'^about/$',views.About.as_view(), name='about'),
 ]

@@ -1,5 +1,8 @@
 from django.shortcuts import render,redirect
 from django.views.generic import View
+from highcharts.views import HighChartsBarView
+
+import random
 
 
 # Create your views here.
@@ -49,3 +52,24 @@ class Items(View):
 
     def get(self, request):
         return render(request, self.template_name)
+
+class Analytics(View):
+    template_name = 'accounting/dashboard/analytics.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+'''
+class BarView(HighChartsBarView):
+    categories = ['Orange', 'Bananas', 'Apples']
+
+    @property
+    def series(self):
+        result = []
+        for name in ('Joe', 'Jack', 'William', 'Averell'):
+            data = []
+            for x in range(len(self.categories)):
+                data.append(random.randint(0, 10))
+            result.append({'name': name, "data": data})
+        return result
+'''

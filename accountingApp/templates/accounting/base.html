@@ -6,6 +6,9 @@
     <title>Accounting</title>
     {% load staticfiles %}
     <script src="{% static 'accounting/js/jquery-3.1.1.slim.min.js' %}"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/highcharts/highcharts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'accounting/js/highcharts.js' %}"></script>
     <link rel="stylesheet" href="{% static 'accounting/css/bootstrap.min.css' %}" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'accounting/css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'accounting/css/Abdemanaf.css' %}">
@@ -22,7 +25,6 @@ body {
 body.modal-open {
     padding-right:0 !important;
 }
-
 
 #sidebar {
    padding-left:0;
@@ -104,6 +106,7 @@ body.modal-open {
     transform: rotate(-44deg);
 }
 </style>
+
     {% block head %}
     {% endblock %}
 </head>
@@ -117,20 +120,23 @@ body.modal-open {
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-           <li class="nav-item">
-          <a class="nav-link" href="{% url 'accountingApp:dashboard' %}">Dashboard</a>
+        <li class="nav-item">
+          <a id='home' class="nav-link" href="{% url 'accountingApp:index' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'accountingApp:invoice' %}">Invoice <span class="sr-only">(current)</span></a>
+          <a id='dashboard' class="nav-link" href="{% url 'accountingApp:dashboard' %}">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'accountingApp:inventory' %}">Inventory</a>
+          <a id= 'invoice' class="nav-link" href="{% url 'accountingApp:invoice' %}">Invoice</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'accountingApp:customers' %}">Customers</a>
+          <a id='inventory' class="nav-link" href="{% url 'accountingApp:inventory' %}">Inventory</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'accountingApp:about' %}">About</a>
+          <a id='customers' class="nav-link" href="{% url 'accountingApp:customers' %}">Customers</a>
+        </li>
+        <li class="nav-item">
+          <a id='about' class="nav-link" href="{% url 'accountingApp:about' %}">About</a>
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">
@@ -142,16 +148,24 @@ body.modal-open {
 
 {% block content %}
 {% endblock %}
-    <script>
-        $("a").on("click", function(){
-        $("a.active").removeClass("active");
-        $(this).addClass("active");
+<!--<script>
+    $(function() {
+        $("a").on("click", function() {
+        //var id = $("a.active").attr('id');
+        //$("a.active").removeClass("active");
+        //$(this).addClass("active");
+        //var id2 = $("a.active").attr('id');
+        //window.alert(id + " " + id2);
         });
-    </script>
+
+    });
+  </script>-->
+
     <script src="{% static 'accounting/js/tether.min.js' %}" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="{% static 'accounting/js/bootstrap.min.js' %}" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="{% static 'accounting/js/IE10-viewport-bug-workaround.js' %}"></script>
     <script src="https://code.highcharts.com/highcharts.src.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 </body>
 </html>
